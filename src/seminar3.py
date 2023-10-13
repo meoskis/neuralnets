@@ -5,7 +5,6 @@ import os.path
 import numpy as np
 from test_utils import get_preprocessed_data, visualize_weights, visualize_loss
 
-
 class Param:
     """
     Trainable parameter of the model
@@ -60,7 +59,7 @@ class ReLULayer:
         """
         #raise Exception("Not implemented!")
         self.mask = X > 0
-        return self.mask * X
+        return self.mask*X
 
     def backward(self, d_out: np.array) -> np.array:
         """
@@ -73,7 +72,7 @@ class ReLULayer:
         """
         # TODO: Implement backward pass
         #raise Exception("Not implemented!")
-        return self.mask * d_out
+        return self.mask*d_out
 
     def params(self) -> dict:
         # ReLU Doesn't have any parameters
@@ -90,9 +89,9 @@ class DenseLayer:
         # TODO: Implement forward pass
         # Your implementation shouldn't have any loops
         #raise Exception("Not implemented!")
-        Z = X @ self.W.value + self.B.value
+        z = X @ self.W.value + self.B.value
         self.X = X.copy()
-        return Z
+        return z
 
     def backward(self, d_out):
         """
@@ -116,12 +115,13 @@ class DenseLayer:
         # raise Exception("Not implemented!")
         # print('d_out shape is ', d_out.shape)
         # print('self.W shape is ', self.W.value.shape)
-        #raise Exception("Not implemented!")
-        batch_size, N = d_out.shape
+        batch_size, N = d_out.shape # N - n_output
         self.W.grad = self.X.T@d_out
-        self.B.grad = np.ones((1, batch_size)) @ d_out
-        self.B.grad = d_out.sum(axis=0, keepdims=True)
-        return d_out @ self.W.value.T
+        self.B.grad = np.ones((1,batch_size))@d_out  # (1,batch_size)*(batch_size,out)
+        self.B.grad = d_out.sum(axis=0,keepdims=True)  # (1,n_out)
+        #raise Exception("Not implemented!")
+        dL_dX = d_out @ self.W.value.T  # (batch_size,n_input)
+        return dL_dX
 
     def params(self):
         return {'W': self.W, 'B': self.B}
@@ -164,6 +164,7 @@ class TwoLayerNet:
             Z = layer.forward(Z)
             for param in layer.params().values():
                 param.grad = np.zeros_like(param.grad)
+
         self.loss, self.d_out = softmax_with_cross_entropy(Z, y)
         return Z
 
@@ -172,14 +173,13 @@ class TwoLayerNet:
         # implement l2 regularization on all params
         # Hint: self.params() is useful again!
 
-        tmp_d_out = self.d_out
+        tmp_d_out = self.d_out # dL_dZ
         for layer in reversed(self.layers):
             tmp_d_out = layer.backward(tmp_d_out)
             for param in layer.params().values():
-                reg_loss, reg_grad = l2_regularization(param.value, self.reg)
+                reg_loss,reg_grad = l2_regularization(param.value,self.reg)
                 self.loss += reg_loss
                 param.grad += reg_grad
-
 
     def fit(self, X, y, learning_rate=1e-3, num_iters=10000,
             batch_size=4, verbose=True):
@@ -235,15 +235,15 @@ class TwoLayerNet:
         """
         z = self.forward(X, y)
         y_predicted = np.argmax(z, axis=1)
-        accuracy = np.mean(y_predicted == y)
+        accuracy = np.mean(y_predicted  == y)
         return accuracy
 
 def train():
-    n_input, n_output = 3072, 10
+    n_input, n_output = 3072,10
     hidden = 100
-    learning_rate = 0.001
-    reg = 1e-3
-    num_iters = 5000
+    learning_rate = 0.01
+    reg = 0.001
+    num_iters = 1000
     batch_size = 10
 
     (x_train, y_train), (x_test, y_test) = get_preprocessed_data(include_bias=False)
