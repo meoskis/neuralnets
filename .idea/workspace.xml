@@ -2,9 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1501ed53-1924-49d5-93b1-834bb5d8be35" name="Changes" comment="seminar 3 fixes">
-      <change beforePath="$PROJECT_DIR$/output/seminar3/loss.png" beforeDir="false" afterPath="$PROJECT_DIR$/output/seminar3/loss.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/output/seminar3/report.md" beforeDir="false" afterPath="$PROJECT_DIR$/output/seminar3/report.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/seminar4.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/seminar4.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/seminar5/weights.png" beforeDir="false" afterPath="$PROJECT_DIR$/output/seminar5/weights.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/seminar1.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/seminar1.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/seminar5.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/seminar5.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/seminar6.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test6.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -85,7 +88,7 @@
     </key>
   </component>
   <component name="RunManager">
-    <configuration name="seminar4" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
+    <configuration name="seminar5" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
@@ -97,7 +100,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/seminar4.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/seminar5.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
