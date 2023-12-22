@@ -8,8 +8,8 @@ import tensorflow as tf
 PATH_TO_S3_MODEL = 'models/model_6_s3'
 PATH_TO_DATA = 'data/raw/cats_dogs_test'
 config = dotenv.dotenv_values('.env')
-ACCESS_KEY = config['ACCESS_KEY']
-SECRET_KEY = config['SECRET_KEY']
+ACCESS_KEY = 'YCAJEKTT2vSJlrWgSP8q4jBtT'
+SECRET_KEY = 'YCPsIQfgB3bneV3Koxab0vi_rDXM2WQcs-FigSBmv'
 
 client = boto3.client(
     's3',
@@ -43,6 +43,6 @@ def test_model_s3(git_user):
 
 
 if __name__ == '__main__':
-    users = ['labintsev', 'balezz', 'ivanov']
+    users = ['labintsev', 'balezz', 'ivanov', 'luckykittty', 'Maxlin12']
     scores = {u: test_model_s3(u) for u in users}
     print(scores)
